@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/app.css";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { RippleBadge } from "./MaterialTheme/styled";
 
 function App() {
   
@@ -9,7 +10,11 @@ function App() {
       <Box sx={{my:5}}>
         <Typography variant="h4" component={"h4"}>Create App with React MUI</Typography>
       </Box>
-      <Button variant="contained">Contained</Button>
+      <Box>
+        <RippleBadge badgeContent={4}>
+          <Button variant="contained" color={"secondary"}>Contained</Button>
+        </RippleBadge>
+      </Box>
     </Stack>
   </Container>;
 }
