@@ -1,9 +1,11 @@
 import React from "react";
 import "../css/app.css";
-import { Container } from "@mui/material";
 import { Link, Route, Switch } from "react-router-dom";
-import { AboutPage } from "./screens/About";
-import { UsersPage } from "./screens/Users";
+import { HomePage } from "./screens/homePage";
+import { ProductsPage } from "./screens/productsPage";
+import { OrdersPage } from "./screens/ordersPage";
+import { UserPage } from "./screens/userPage";
+import { HelpPage } from "./screens/helpPage";
 
 function App() {
   return(
@@ -11,24 +13,36 @@ function App() {
   <nav>
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">HomePage</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/products">ProductsPage</Link>
       </li>
       <li>
-        <Link to="/users">Users</Link>
+        <Link to="/orders">OrdersPage</Link>
+      </li>
+      <li>
+        <Link to="/member-page">UserPage</Link>
+      </li>
+      <li>
+        <Link to="/help-page">HelpPage</Link>
       </li>
     </ul>
   </nav>
 
   
   <Switch>
-    <Route path="/about">
-      <AboutPage />
+    <Route path="/products">
+      <ProductsPage />
     </Route>
-    <Route path="/users">
-      <UsersPage />
+    <Route path="/orders">
+      <OrdersPage />
+    </Route>
+    <Route path="/member-page">
+      <UserPage />
+    </Route>
+    <Route path="/help-page">
+      <HelpPage />
     </Route>
     <Route path="/">
       <HomePage />
@@ -36,10 +50,6 @@ function App() {
   </Switch>
 </div>
   );
-}
-
-function HomePage() {
-  return <Container>HomePage</Container>;
 }
 
 
