@@ -12,3 +12,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
+// Malumotlar Bunkeri
