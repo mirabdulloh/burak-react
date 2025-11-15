@@ -100,7 +100,7 @@
     ),
     linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 300px);
 }
-.homepage .popular-dishes-frame .no-data{
+.homepage .popular-dishes-frame .no-data {
   width: 100%;
   height: 300px;
   display: flex;
@@ -148,9 +148,9 @@
 }
 .homepage .new-products-frame .main .card {
   height: 335px;
-  width: 290px;cursor: pointer;
+  width: 290px;
+  cursor: pointer;
 }
-
 
 .homepage .new-products-frame .product-sale {
   position: absolute;
@@ -214,7 +214,7 @@
   font-weight: 500;
 }
 
-.homepage .new-products-frame .no-data{
+.homepage .new-products-frame .no-data {
   width: 100%;
   height: 300px;
   display: flex;
@@ -231,19 +231,107 @@
 
 /* Ads frame */
 
-.homepage .ads-restaurant-frame{
-  width: 100%;height: 693px;
+.homepage .ads-restaurant-frame {
+  width: 100%;
+  height: 693px;
   display: flex;
   overflow: hidden;
   transform: perspective(0px);
   box-shadow: -3px 0px 20px 14px #34343480;
 }
 
-.homepage .ads-restaurant-frame .ads-video{
+.homepage .ads-restaurant-frame .ads-video {
   width: 100%;
   background: #0c0e12;
   display: flex;
-  box-shadow: 0px -8px 90px rgb(215,215,255) ;
+  box-shadow: 0px -8px 90px rgb(215, 215, 255);
   transform: scale(1.5);
   overflow: hidden;
+}
+
+/* Active Users Page */
+
+
+.homepage .active-user-frame {
+  width: 100%;
+  height: 550px;
+  background: #f8f8ff;
+}
+
+
+.homepage .active-user-frame .category-title {
+  margin-top: 93px;
+  display: flex;
+  width: 214px;
+  height: 31.712px;
+  flex-direction: column;
+  justify-content: center;
+  color: #343434;
+  font-family: "Roboto Serif";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.homepage .cards-frame {
+  margin-top: 56px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+
+.homepage .card {
+  width: 305px;
+  height: 303px;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.homepage .card-image {
+  width: 100%;
+  height: 274px;
+  object-fit: cover;
+}
+
+
+.homepage .member-nickname {
+  display: flex;
+  width: 271px;
+  height: 26.757px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: "Roboto Serif";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+.homepage .no-data {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-family: "poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 34px;
+  color: #e3c08d;
 }
