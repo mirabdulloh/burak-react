@@ -32,8 +32,9 @@ export default function PopularDishes() {
                         <img src={ele.imagePath} alt="" />
                       </CardCover>
                       <CardCover className="card-cover" />
-                      <CardContent sx={{ justifyContent: "flex-end" }}>
+                      <CardContent sx={{ justifyContent: "flex-end", width:"100%" }}>
                         <Stack
+                          
                           flexDirection={"row"}
                           justifyContent={"space-between"}
                         >
@@ -48,7 +49,7 @@ export default function PopularDishes() {
                           <Typography
                             sx={{
                               fontWeight: "md",
-                              color: "neutral;.300",
+                              color: "neutral.300",
                               display: "flex",
                               alignItems: "center",
                             }}
@@ -72,7 +73,7 @@ export default function PopularDishes() {
                       >
                         <Typography
                           startDecorator={<DescriptionOutlinedIcon />}
-                          textColor="natural.300"
+                          textColor="white"
                         >
                           This is Delicious Meal
                         </Typography>
