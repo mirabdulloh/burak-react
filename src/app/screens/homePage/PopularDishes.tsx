@@ -32,9 +32,10 @@ export default function PopularDishes() {
                         <img src={ele.imagePath} alt="" />
                       </CardCover>
                       <CardCover className="card-cover" />
-                      <CardContent sx={{ justifyContent: "flex-end" }}>
+                      <CardContent
+                        sx={{ justifyContent: "flex-end", width: "100%" }}
+                      >
                         <Stack
-                          
                           flexDirection={"row"}
                           justifyContent={"space-between"}
                         >
@@ -42,7 +43,7 @@ export default function PopularDishes() {
                             level="h2"
                             fontSize="lg"
                             textColor="#fff"
-                            mb={1}
+                            mb={0}
                           >
                             {ele.productName}
                           </Typography>
