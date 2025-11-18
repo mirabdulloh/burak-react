@@ -18,8 +18,6 @@ const products = [
   { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
   { productName: "Kebab", imagePath: "/img/kebab.webp" },
   { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-  
-  
 ];
 
 export default function Products() {
@@ -115,9 +113,12 @@ export default function Products() {
                             style={{ display: "flex" }}
                           />
                         </Button>
-                        <Button className="view-btn" >
+                        <Button className="view-btn">
                           <Badge badgeContent={20} color="secondary">
-                            <RemoveRedEyeIcon color="inherit" sx={{ color: 20>0 ? "gray" : "white", }} />
+                            <RemoveRedEyeIcon
+                              color="inherit"
+                              sx={{ color: 20 > 0 ? "gray" : "white" }}
+                            />
                           </Badge>
                         </Button>
                       </Stack>
@@ -126,8 +127,8 @@ export default function Products() {
                           {product.productName}
                         </span>
                         <div className="product-price-logo">
-                          <MonetizationOnIcon className="product-price-dollor"/>
-                        <span className="product-price">12</span>
+                          <MonetizationOnIcon className="product-price-dollor" />
+                          <span className="product-price">12</span>
                         </div>
                       </Box>
                     </Stack>
@@ -138,12 +139,62 @@ export default function Products() {
               )}
             </Stack>
           </Stack>
-          <Stack className="pagination-section"></Stack>
+          <Stack className="pagination-section">
+            <Pagination
+              count={3}
+              page={1}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                  color="secondary"
+                />
+              )}
+            />
+          </Stack>
         </Stack>
       </Container>
 
-      <div className="brands-logo"></div>
-      <div className="address"></div>
+      <div className="brands-logo">
+        <Container>
+          <Box className="brands-title">Our Family Brands</Box>
+          <Stack className="brands-card-frame">
+            <Stack className="brands-card">
+              <img src="/img/sweets.webp" alt="#" className="brands-card-img" />
+            </Stack>
+            <Stack className="brands-card">
+              <img src="/img/sweets.webp" alt="#" className="brands-card-img" />
+            </Stack>
+            <Stack className="brands-card">
+              <img src="/img/sweets.webp" alt="#" className="brands-card-img" />
+            </Stack>
+            <Stack className="brands-card">
+              <img src="/img/sweets.webp" alt="#" className="brands-card-img" />
+            </Stack>
+          </Stack>
+          
+        </Container>
+      </div>
+      <div className="address">
+        <Container>
+            <Stack className="address-area">
+                <Box className='title'>Our address</Box>
+                <iframe
+                style={{marginTop:"80px"}}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019568831713!2d-122.41941548468128!3d37.77492977975908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5d6f9fdf%3A0x7d7f8c6e32ed2d4a!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+                width="1300"
+                height="500"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Map"
+                >
+                </iframe>
+            </Stack>
+
+        </Container>
+      </div>
     </div>
   );
 }

@@ -152,6 +152,20 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.products-page .products .product-wrapper .no-data {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-family: "poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 34px;
+  color: #e3c08d;
+}
 .products-page .products .product-wrapper .product-card {
   width: 273px;
   height: auto;
@@ -259,3 +273,93 @@
   font-weight: 600;
   line-height: normal;
 }
+
+/* Pagination */
+
+.products-page .products .pagination-section {
+  margin-top: 9px;
+}
+
+/* brands logo */
+
+.products .brands-logo {
+  position: relative;
+  margin-top: 67px;
+  width: 100%;
+  height: 630px;
+  flex-shrink: 0;
+  background: #0d1518;
+}
+
+.products .brands-logo .brands-title {
+  width: 100%;
+  height: 46px;
+  flex-shrink: 0;
+  color: #e3c08d;
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  padding-top: 84px;
+}
+
+.products .brands-logo .brands-card-frame {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.products .brands-logo .brands-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 258.78px;
+  height: 350px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #0d1518;
+  box-shadow: 0 0 22px 0 #e4d4d4;
+}
+
+.products .brands-logo .brands-card .brands-card-img {
+  width: 238.874px;
+  height: 329px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25) inset,
+    0 4px 4px 0 rgba(0, 0, 0, 0.25) inset,
+    0 4px 16px 0 rgba(242, 189, 87, 0.04) inset;
+}
+
+/* Address */
+
+.products-page .products .address {
+  margin-top: 57px;
+  margin-bottom: 89px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.products-page .products .address .address-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.products-page .products .address .address-area .title {
+  width: 100%;
+  color: #343434;
+  font-family: "Roboto Serif";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+}
+
