@@ -32,7 +32,7 @@ export default function PopularDishes() {
                         <img src={ele.imagePath} alt="" />
                       </CardCover>
                       <CardCover className="card-cover" />
-                      <CardContent sx={{ justifyContent: "flex-end", width:"100%" }}>
+                      <CardContent sx={{ justifyContent: "flex-end" }}>
                         <Stack
                           
                           flexDirection={"row"}
