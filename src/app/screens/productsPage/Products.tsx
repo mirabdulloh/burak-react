@@ -19,6 +19,7 @@ const products = [
   { productName: "Kebab", imagePath: "/img/kebab.webp" },
   { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
 ];
+const BadgeNumber =12;
 
 export default function Products() {
   return (
@@ -114,10 +115,10 @@ export default function Products() {
                           />
                         </Button>
                         <Button className="view-btn">
-                          <Badge badgeContent={20} color="secondary">
+                          <Badge badgeContent={BadgeNumber} color="secondary">
                             <RemoveRedEyeIcon
                               color="inherit"
-                              sx={{ color: 20 > 0 ? "gray" : "white" }}
+                              sx={{ color: BadgeNumber > 20 ? "gray" : "white" }}
                             />
                           </Badge>
                         </Button>
