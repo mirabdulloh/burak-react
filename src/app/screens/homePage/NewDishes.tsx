@@ -17,9 +17,9 @@ const newDishes = [
 
 export default function NewDishes() {
   return (
-    <CssVarsProvider>
-      <div className="new-products-frame">
-        <Container>
+    <div className="new-products-frame">
+      <Container>
+        <CssVarsProvider>
           <Stack className="main">
             <Box className="category-title">Fresh Menu</Box>
 
@@ -33,19 +33,19 @@ export default function NewDishes() {
                         <img src={ele.imagePath} alt="" />
                       </AspectRatio>
                     </CardOverflow>
-  
+
                     <CardOverflow variant="soft" className="product-detail">
                       <Stack className="info">
                         <Stack flexDirection={"row"}>
                           <Typography className="title">
                             {ele.productName}
                           </Typography>
-  
+
                           <Divider width="2" height="24" bg="#d9d9d9" />
-  
+
                           <Typography className="price">$12</Typography>
                         </Stack>
-  
+
                         <Stack>
                           <Typography className="views">
                             20
@@ -58,14 +58,13 @@ export default function NewDishes() {
                     </CardOverflow>
                   </Card>
                 ))
-              ): (
-                <Box className = "no-data"> New Products are not available!</Box>
+              ) : (
+                <Box className="no-data"> New Products are not available!</Box>
               )}
-              
             </Stack>
           </Stack>
-        </Container>
-      </div>
-    </CssVarsProvider>
+        </CssVarsProvider>
+      </Container>
+    </div>
   );
-} 
+}
