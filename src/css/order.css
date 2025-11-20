@@ -1,0 +1,516 @@
+.order-page {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: #f8f8ff;
+  display: flex;
+}
+/* order container */
+.order-page .order-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.order-page .order-left {
+  width: 860px;
+  height: auto;
+}
+
+.order-page .order-left .order-nav-frame {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #f8f8f8;
+  margin-left: 71px;
+}
+
+.order-page .order-left .order-nav-frame .table-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-page .order-left .order-main-content {
+  width: 855px;
+  height: auto;
+}
+
+/* Paused Orders */
+
+.order-page .order-main-content .order-main-box {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background: #f8f8fe;
+  box-shadow: -12px 12px 4px 0 #bababf, 0 4px 10px 9px #d3d3e7 inset,
+    0 4px 16px 0 rgba(242, 189, 87, 0.04) inset;
+  flex-shrink: 0;
+  margin-bottom: 32px;
+}
+
+.order-page .order-main-content .order-main-box .order-box-scroll {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 40px;
+  box-sizing: border-box;
+}
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price:first-child {
+  margin-top: 21px;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .order-dish-img {
+  position: relative;
+  width: 50px;
+  height: 47px;
+  flex-shrink: 0;
+  border-radius: 29px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .dish-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .title-dish {
+  display: flex;
+  align-items: flex-start;
+  width: 300px;
+  color: #000;
+  font-family: Commissioner;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+  margin: 0px;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .price-box {
+  position: relative;
+  width: 159px;
+  height: 41px;
+  margin: 7px 0 7px 0;
+  margin-left: 135px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .price-box
+  p {
+  color: rgba(38, 38, 38, 0.88);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* total price */
+
+.order-page .order-main-content .order-main-box .total-price-box {
+  width: 750px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-bottom: 17px;
+  margin-top: 26px;
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .box-total {
+  width: 474px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .total-price-box
+  .cancel-button {
+  border-radius: 10px;
+  background: #d2b68c;
+  color: #343434;
+  font-family: Commissioner;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .pay-button {
+  border-radius: 10px;
+  background: #70b45b;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Commissioner;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* order right user  */
+
+.order-page .order-right {
+  width: 360px;
+  height: auto;
+  margin-top: 86px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-page .order-right .order-user-info {
+  width: 100%;
+  height: 308px;
+  border-radius: 16px;
+  background: #f8f8fe;
+  box-shadow: 14px 14px 5px 0 #bbbbbf, 0 1px 11px 12px #d3d3e7 inset,
+    0 4px 16px 0 rgba(242, 189, 87, 0.04) inset;
+  margin-top: 3px;
+  margin-bottom: 23px;
+}
+
+.order-page .order-right .order-user-info .user-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 29px;
+}
+
+.order-page .order-right .order-user-info .user-name .member-box {
+  width: 117px;
+  height: auto;
+  position: relative;
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name
+  .member-box
+  .order-user-img {
+  position: relative;
+}
+.order-page
+  .order-right
+  .order-user-info
+  .user-name
+  .member-box
+  .order-user-img
+  .order-user-avatar {
+  width: 117px;
+  height: auto;
+  border-radius: 40px;
+  background: lightgray 50%, cover no-repeat;
+  box-shadow: 0 4px 4px 0 rgba(126, 126, 126, 0.25);
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name
+  .member-box
+  .order-user-img
+  .order-user-icon-box {
+  position: absolute;
+  top: 88px;
+  left: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 37px;
+  /* background: rgba(0, 0, 0, 0.33); */
+  background: lightgray 50% / cover no-repeat;
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name
+  .member-box
+  .member-box-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name
+  .member-box
+  .order-user-name {
+  color: #08090d;
+  font-family: Commissioner;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 128.571% */
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name
+  .member-box
+  .order-user-status {
+  color: #a1a1a1;
+  font-family: Commissioner;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 180% */
+}
+
+.order-page .order-right .order-user-info .user-name-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name-bottom
+  .user-name-bottom-location {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+  margin-top: 10px;
+  /* background-color: red; */
+}
+
+.order-page
+  .order-right
+  .order-user-info
+  .user-name-bottom
+  .user-name-bottom-location
+  .location {
+  color: #000;
+  font-family: "DM Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.order-page .order-right .order-user-pay {
+  width: 100%;
+  height: 308px;
+  border-radius: 16px;
+  background: #f8f8fe;
+  box-shadow: 14px 14px 5px 0 #bbbbbf, 0 1px 11px 12px #d3d3e7 inset,
+    0 4px 16px 0 rgba(242, 189, 87, 0.04) inset;
+  margin-top: 3px;
+  margin-bottom: 23px;
+}
+
+.order-page .order-right .order-user-pay .paying-system {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.order-page .order-right .order-user-pay .paying-system .card-number {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-page .order-right .order-user-pay .paying-system .card-number input {
+  width: 332px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1px solid #b4aaaa;
+  background: #f5f5f5;
+  margin-bottom: 10px;
+  color: #777;
+  font-family: Commissioner;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 240% */
+  padding-left: 7px;
+}
+
+.order-page
+  .order-right
+  .order-user-pay
+  .paying-system
+  .card-number
+  .card-date-cvv {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.order-page
+  .order-right
+  .order-user-pay
+  .paying-system
+  .card-number
+  .card-date-cvv
+  input {
+  width: 162px;
+  height: 40px;
+  flex-shrink: 0;
+  color: #777;
+  font-family: Commissioner;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding-left: 7px;
+}
+
+.order-page .order-right .order-user-pay .order-pay-cards {
+  /* width: 100%; */
+  margin-top: 58px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.order-page .order-right .order-user-pay .order-pay-cards .cards {
+  width: 243px;
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .total-price-box
+  .verify-button {
+  width: 170px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #3a87cb;
+  color: #fff;
+  font-family: Commissioner;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .total-price-box
+  .date-confirmation {
+  margin-left: 10px;
+  width: 102px;
+  color: #000;
+  font-family: Commissioner;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.order-page .order-main-content .order-main-box .finished-total-price-box {
+  width: 100%;
+  margin-left: 175px;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .finished-total-price-box
+  .box-total {
+  width: 474px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.order-page
+  .order-main-content
+  .order-main-box
+  .finished-total-price-box
+  .box-total
+  p {
+  color: #000;
+  font-family: Commissioner;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 257.143% */
+}
