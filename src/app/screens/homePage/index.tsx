@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Statistics from "./Statistics";
 import PopularDishes from "./PopularDishes";
 import NewDishes from "./NewDishes";
@@ -8,6 +8,14 @@ import Events from "./Events";
 import "../../../css/home.css"
 
 export default function HomePage() {
+    // Selector: Store => DATA
+    useEffect(() => {
+      // Backend data request.json => DATA
+
+
+      // Slice: Date => Store
+    }, []);
+
     return (
       <div className="homepage">
         <Statistics/>
