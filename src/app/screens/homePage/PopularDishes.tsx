@@ -11,9 +11,8 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrievePopularDishes } from "./selector";
-import { Product } from "../../../lib/types/product";
-import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
+import { Product } from "../../../lib/types/product";
 
 /** REDUX SLICE AND SELECTOR */
 // Backend data → Component → dispatch() → Action → Reducer → Store → useSelector → UI
@@ -33,7 +32,7 @@ export default function PopularDishes() {
           <Box className="category-title">Popular Dishes</Box>
           <Stack className="cards-frame">
             {popularDishes.length !== 0 ? (
-              popularDishes.map((product) => {
+              popularDishes.map((product:Product) => {
                 const imgPath = `${serverApi}/${product.productImages?.[0]}`;
                 return (
                   <CssVarsProvider key={product._id}>
