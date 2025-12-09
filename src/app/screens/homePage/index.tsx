@@ -14,6 +14,7 @@ import { retrievePopularDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 
 /** REDUX SLICE AND SELECTOR */
+// Backend data → Component → dispatch() → Action → Reducer → Store → useSelector → UI
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
 });
@@ -26,9 +27,9 @@ export default function HomePage() {
   const { popularDishes } = useSelector(popularDishesRetriever);
   // Selector: Store => DATA
   useEffect(() => {
-    // Backend data request.json => DATA
+    
   }, []);
-  console.log("popularDishes:", popularDishes);
+  console.log("", );
 
   return (
     <div className="homepage">
