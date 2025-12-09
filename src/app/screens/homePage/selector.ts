@@ -5,7 +5,7 @@ const selectHomePage = (state: AppRootState) => state.homePage;
 
 export const retrievePopularDishes = createSelector(
   selectHomePage,
-  (HomePage) => HomePage.popularDishes
+  (HomePage) => HomePage.popularDishes || []
 );
 
 export const retrieveNewDishes = createSelector(
