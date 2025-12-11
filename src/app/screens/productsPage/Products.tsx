@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Container, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
@@ -9,12 +9,14 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createSelector, Dispatch } from "@reduxjs/toolkit";
 import { setProducts } from "./slice";
 import { Product } from "../../../lib/types/product";
 import { retrieveProducts } from "./selector";
-
+import ProductService from "../../services/ProductService";
+import { ProductCollection } from "../../../lib/enums/product.enum";
+import { serverApi } from "../../../lib/config";
 
 /** REDUX SLICE AND SELECTOR */
 // Backend data → Component → dispatch() → Action → Reducer → Store → useSelector → UI
@@ -24,26 +26,28 @@ const actionDispatch = (dispatch: Dispatch) => ({
 
 /** REDUX SLICE AND SELECTOR */
 // Backend data → Component → dispatch() → Action → Reducer → Store → useSelector → UI
-const productsRetriever = createSelector(
-  retrieveProducts,
-  (products) => ({ products })
-);
-
-const products = [
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-];
-const BadgeNumber =12;
-
-
+const productsRetriever = createSelector(retrieveProducts, (products) => ({
+  products,
+}));
 
 export default function Products() {
+  const { setProducts } = actionDispatch(useDispatch());
+  const { products } = useSelector(productsRetriever);
+  useEffect(() => {
+    const product = new ProductService();
+    product
+      .getProducts({
+        page: 1,
+        limit: 8,
+        order: "createdAt",
+        productCollection: ProductCollection.DISH,
+        search: "",
+      })
+      .then((data) => setProducts(data))
+      .catch((err) => {
+        console.error("Failed to fetch products:", err);
+      });
+  }, []);
   return (
     <div className="products">
       <Container>
@@ -121,14 +125,19 @@ export default function Products() {
             </Stack>
             <Stack className="product-wrapper">
               {products.length !== 0 ? (
-                products.map((product, index) => {
+                products.map((products: Product) => {
+                  const imgPath = `${serverApi}/${products.productImages[0]}`;
+                  const sizeVolume =
+                    products.productCollection === ProductCollection.DRINK
+                      ? products.productVolume + " liter"
+                      : products.productSize + " size";
                   return (
-                    <Stack className="product-card" key={index}>
+                    <Stack className="product-card" key={products._id}>
                       <Stack
                         className="product-img"
-                        sx={{ backgroundImage: `url(${product.imagePath})` }}
+                        sx={{ backgroundImage: `url(${imgPath})` }}
                       >
-                        <div className="product-sale"> Normal Size</div>
+                        <div className="product-sale">{sizeVolume}</div>
                         <Button className="shop-btn">
                           <img
                             src="/icons/shopping-cart.svg"
@@ -137,21 +146,23 @@ export default function Products() {
                           />
                         </Button>
                         <Button className="view-btn">
-                          <Badge badgeContent={BadgeNumber} color="secondary">
+                          <Badge badgeContent={products.productViews} color="secondary">
                             <RemoveRedEyeIcon
                               color="inherit"
-                              sx={{ color: BadgeNumber > 20 ? "gray" : "white" }}
+                              sx={{
+                                color: products.productViews === 0 ? "gray" : "white",
+                              }}
                             />
                           </Badge>
                         </Button>
                       </Stack>
                       <Box className="product-desc">
                         <span className="product-title">
-                          {product.productName}
+                          {products.productName}
                         </span>
                         <div className="product-price-logo">
                           <MonetizationOnIcon className="product-price-dollor" />
-                          <span className="product-price">12</span>
+                          <span className="product-price">{products.productPrice}</span>
                         </div>
                       </Box>
                     </Stack>
@@ -198,24 +209,21 @@ export default function Products() {
               <img src="/img/sweets.webp" alt="#" className="brands-card-img" />
             </Stack>
           </Stack>
-          
         </Container>
       </div>
       <div className="address">
         <Container>
-            <Stack className="address-area">
-                <Box className='title'>Our address</Box>
-                <iframe
-                style={{marginTop:"80px"}}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019568831713!2d-122.41941548468128!3d37.77492977975908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5d6f9fdf%3A0x7d7f8c6e32ed2d4a!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
-                width="1300"
-                height="500"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Map"
-                >
-                </iframe>
-            </Stack>
-
+          <Stack className="address-area">
+            <Box className="title">Our address</Box>
+            <iframe
+              style={{ marginTop: "80px" }}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019568831713!2d-122.41941548468128!3d37.77492977975908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5d6f9fdf%3A0x7d7f8c6e32ed2d4a!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+              width="1300"
+              height="500"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Google Map"
+            ></iframe>
+          </Stack>
         </Container>
       </div>
     </div>
