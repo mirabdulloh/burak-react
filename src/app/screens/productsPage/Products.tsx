@@ -9,6 +9,26 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
+import { useDispatch } from "react-redux";
+import { createSelector, Dispatch } from "@reduxjs/toolkit";
+import { setProducts } from "./slice";
+import { Product } from "../../../lib/types/product";
+import { retrieveProducts } from "./selector";
+
+
+/** REDUX SLICE AND SELECTOR */
+// Backend data → Component → dispatch() → Action → Reducer → Store → useSelector → UI
+const actionDispatch = (dispatch: Dispatch) => ({
+  setProducts: (data: Product[]) => dispatch(setProducts(data)),
+});
+
+/** REDUX SLICE AND SELECTOR */
+// Backend data → Component → dispatch() → Action → Reducer → Store → useSelector → UI
+const productsRetriever = createSelector(
+  retrieveProducts,
+  (products) => ({ products })
+);
+
 const products = [
   { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
   { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
@@ -20,6 +40,8 @@ const products = [
   { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
 ];
 const BadgeNumber =12;
+
+
 
 export default function Products() {
   return (
