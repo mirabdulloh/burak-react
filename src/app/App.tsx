@@ -15,6 +15,11 @@ import Test from "./screens/Test";
 import { CartItem } from "../lib/types/search";
 import useBusket from "./hooks/useBusket";
 import AuthenticationModal from "./components/auth";
+import { sweetErrorHandling, sweetTopSuccessAlert } from "../lib/sweetAlert";
+import { Message } from "@mui/icons-material";
+import { Messages } from "../lib/config";
+import MemberService from "./services/MemberService";
+import { useGlobals } from "./hooks/useGlobals";
 
 function App() {
   const location = useLocation();
@@ -22,6 +27,8 @@ function App() {
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBusket();
   const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement|null>(null);
+  const {setAuthMember} = useGlobals();
 
   /** HANDLERS **/
   const handleSignupClose = () => {
@@ -31,6 +38,25 @@ function App() {
     setLoginOpen(false);
   };
 
+  const handleLogoutClick = (e:any) => {
+    setAnchorEl(e.currentTarget);
+  }
+
+  const handleCloseLogout = () => {
+    setAnchorEl(null);
+  }
+  const handleLogoutRequest = async() => {
+    try{
+      const member = new MemberService();
+      await member.logout()
+      await sweetTopSuccessAlert("success",700);
+      setAuthMember(null);
+    }catch(err){
+      console.log(err);
+      
+      sweetErrorHandling(Messages.error1).then();
+    }
+  }
   return (
     <>
       {location.pathname === "/" ? (
@@ -42,6 +68,10 @@ function App() {
           onDeleteAll={onDeleteAll}
           setSignupOpen={setSignupOpen}
           setLoginOpen={setLoginOpen}
+          anchorEl={anchorEl}
+          handleLogoutClick={handleLogoutClick}
+          handleCloseLogout={handleCloseLogout}
+          handleLogoutRequest={handleLogoutRequest}
         />
       ) : (
         <OtherNavbar
@@ -52,6 +82,10 @@ function App() {
           onDeleteAll={onDeleteAll}
           setSignupOpen={setSignupOpen}
           setLoginOpen={setLoginOpen}
+          anchorEl={anchorEl}
+          handleLogoutClick={handleLogoutClick}
+          handleCloseLogout={handleCloseLogout}
+          handleLogoutRequest={handleLogoutRequest}
         />
       )}
 
