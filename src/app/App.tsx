@@ -13,59 +13,53 @@ import "../css/navbar.css";
 import "../css/footer.css";
 import Test from "./screens/Test";
 import { CartItem } from "../lib/types/search";
+import useBusket from "./hooks/useBusket";
 
 function App() {
   const location = useLocation();
-  const cartJson: string | null = localStorage.getItem("cartData");
-  const currentCart = cartJson ? JSON.parse(cartJson) : [];
-  const [cartItems, setCartItems] = useState<CartItem[]>(currentCart);
 
-  /** HANDLERS */
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBusket();
 
-  const onAdd = (input: CartItem) => {
-    const exist: any = cartItems.find(
-      (item: CartItem) => item._id === input._id
-    );
-    if (exist) {
-      const cardUpdate = cartItems.map((item: CartItem) =>
-        item._id === input._id
-          ? { ...exist, quantity: exist.quantity + 1 }
-          : item
-      );
-      setCartItems(cardUpdate);
-      localStorage.setItem("cartData", JSON.stringify(cardUpdate));
-    } else {
-      const cardUpdate = [...cartItems, { ...input }];
-      setCartItems(cardUpdate);
-      localStorage.setItem("cartData", JSON.stringify(cardUpdate));
-    }}
+  return (
+    <>
+      {location.pathname === "/" ? (
+        <HomeNavbar
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+        />
+      ) : (
+        <OtherNavbar
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+        />
+      )}
 
-
-    return (
-      <>
-        {location.pathname === "/" ? <HomeNavbar cartItems={cartItems} /> : <OtherNavbar cartItems = {cartItems} />}
-
-        <Switch>
-          <Route path="/products">
-            <ProductsPage onAdd = {onAdd} />
-          </Route>
-          <Route path="/orders">
-            <OrdersPage />
-          </Route>
-          <Route path="/member-page">
-            <UserPage />
-          </Route>
-          <Route path="/help">
-            <HelpPage />
-          </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-        <Footer />
-      </>
-    );
-  };
-
+      <Switch>
+        <Route path="/products">
+          <ProductsPage onAdd={onAdd} />
+        </Route>
+        <Route path="/orders">
+          <OrdersPage />
+        </Route>
+        <Route path="/member-page">
+          <UserPage />
+        </Route>
+        <Route path="/help">
+          <HelpPage />
+        </Route>
+        <Route path="/">
+          <HomePage />
+        </Route>
+      </Switch>
+      <Footer />
+    </>
+  );
+}
 
 export default App;
