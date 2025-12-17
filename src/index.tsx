@@ -16,6 +16,7 @@ const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
+  <React.StrictMode>
   <Provider store={store}>
     <ContextProvider>
       <ThemeProvider theme={theme}>
@@ -26,6 +27,7 @@ root.render(
       </ThemeProvider>
     </ContextProvider>
   </Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
