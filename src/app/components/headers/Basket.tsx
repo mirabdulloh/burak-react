@@ -7,8 +7,12 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
-import { CartItem } from "../../lib/types/search";
-import { serverApi } from "../../lib/config";
+import { CartItem } from "../../../lib/types/search";
+import { Messages, serverApi } from "../../../lib/config";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../../hooks/useGlobals";
+import { Message } from "@mui/icons-material";
+import OrderService from "../../services/OrderService";
 
 interface BasketProps {
   cartItems: CartItem[];
@@ -21,7 +25,7 @@ interface BasketProps {
 export default function Basket(props: BasketProps) {
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
 
-  const authMember = null;
+  const authMember = useGlobals();
   const history = useHistory();
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   const shippingCost: number = itemsPrice < 100 ? 5 : 0;
@@ -38,6 +42,22 @@ export default function Basket(props: BasketProps) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const proceedOrderHandler = async () => {
+    try {
+      handleClose();
+      if (!authMember) throw new Error(Messages.error2);
+      const order = new OrderService();
+      await order.createOrder(cartItems);
+
+      onDeleteAll();
+      // Refresh VIA Context
+      history.push("/orders");
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
   };
 
   return (
@@ -142,8 +162,10 @@ export default function Basket(props: BasketProps) {
           </Box>
           {cartItems.length > 0 ? (
             <Box className={"basket-order"}>
-              <span className={"price"}>Total: ${totalPrice} ({itemsPrice} +{shippingCost})</span>
-              <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+              <span className={"price"}>
+                Total: ${totalPrice} ({itemsPrice} +{shippingCost})
+              </span>
+              <Button startIcon={<ShoppingCartIcon />} variant={"contained"} onClick={proceedOrderHandler}>
                 Order
               </Button>
             </Box>
