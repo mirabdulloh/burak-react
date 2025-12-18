@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Cookie from "universal-cookie";
 import { Member } from "../../lib/types/member";
 import { GlobalContext } from "../hooks/useGlobals";
@@ -14,9 +14,10 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
       ? JSON.parse(localStorage.getItem("memberData") as string)
       : null
   );
+  const [orderBuilder, setOrderBuilder] = useState<Date>(new Date())
 
   console.log("=== verify ===");
-  return(<GlobalContext.Provider value={{authMember,setAuthMember}}>
+  return(<GlobalContext.Provider value={{authMember,setAuthMember, orderBuilder,setOrderBuilder}}>
     {children}
   </GlobalContext.Provider>)
   

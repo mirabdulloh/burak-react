@@ -24,7 +24,7 @@ interface BasketProps {
 
 export default function Basket(props: BasketProps) {
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
-
+  const { setOrderBuilder} = useGlobals();
   const authMember = useGlobals();
   const history = useHistory();
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
@@ -53,6 +53,7 @@ export default function Basket(props: BasketProps) {
 
       onDeleteAll();
       // Refresh VIA Context
+      setOrderBuilder(new Date());
       history.push("/orders");
     } catch (err) {
       console.log(err);
