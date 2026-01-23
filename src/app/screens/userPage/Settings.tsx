@@ -87,9 +87,9 @@ export function Settings() {
       <Box className={"member-media-frame"}>
         <img src={memberImage} className={"mb-image"} />
         <div className={"media-change-box"}>
-          <span>Upload image</span>
-          <p>JPG, JPEG, PNG formats only!</p>
-          <div className={"up-del-box"}>
+          <span style={{marginLeft:"10px"}}>Upload image</span>
+          <p style={{marginLeft:"10px"}}>JPG, JPEG, PNG formats only!</p>
+          <div className={"up-del-box"} style={{marginLeft:"10px"}}>
             <Button component="label" >
               <CloudDownloadIcon />
               <input type="file" hidden onChange={handleImageViewer}/>
